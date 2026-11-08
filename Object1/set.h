@@ -2,6 +2,8 @@
 
 #include "Resource.h"
 
+#include "../SharedData.h"
+
 class Object1
 {
 private:

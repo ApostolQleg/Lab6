@@ -14,12 +14,12 @@ struct PointParams {
 // Для того щоб переконатися, що отримані саме параметри точок
 constexpr ULONG_PTR CD_POINT_PARAMS = 0x1001;
 
-// Користувацьке повідомлення про оновлення даних у Clipboard
-constexpr UINT WM_UPDATE_GRAPH = WM_USER + 1;
+// Системні користувацькі повідомлення
+constexpr UINT WM_UPDATE_GRAPH = WM_USER + 1; // Object1 -> Object3 (оновлення графіка)
+constexpr UINT WM_DATA_READY = WM_USER + 2; // Object2 -> Object1 (точки в буфері обміну)
+constexpr UINT WM_OBJECT2_READY = WM_USER + 3; // Object2 -> Object1 (вікно Object2 створено)
 
 // Для зручного пошуку через FindWindow
-constexpr const wchar_t* OBJECT2_CLASS = L"Object2Class";
-constexpr const wchar_t* OBJECT2_TITLE = L"Object2";
-
-constexpr const wchar_t* OBJECT3_CLASS = L"Object3Class";
-constexpr const wchar_t* OBJECT3_TITLE = L"Object3";
+constexpr const wchar_t* OBJECT1_CLASS = L"IDC_OBJECT1";
+constexpr const wchar_t* OBJECT2_CLASS = L"IDC_OBJECT2";
+constexpr const wchar_t* OBJECT3_CLASS = L"IDC_OBJECT3";

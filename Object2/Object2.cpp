@@ -5,6 +5,9 @@
 #include "framework.h"
 #include "Object2.h"
 
+#include "../SharedData.h"
+#include "generator.h"
+
 #define MAX_LOADSTRING 100
 
 // Global Variables:
@@ -78,7 +81,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
     wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_OBJECT2);
-    wcex.lpszClassName  = szWindowClass;
+    wcex.lpszClassName  = OBJECT2_CLASS;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
@@ -98,11 +101,11 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // Store instance handle in our global variable
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+   HWND hWnd = CreateWindowW(OBJECT2_CLASS, szTitle, WS_OVERLAPPEDWINDOW,
        CW_USEDEFAULT,        // x
        0,                    // y
-       400,                  // width
-       300,                  // height
+       1000,                 // width
+       800,                  // height
        nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
@@ -130,6 +133,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+    case WM_CREATE:
+        Object2::getInstance()->OnCreate(hWnd);
+        break;
+
+    case WM_SIZE:
+        InvalidateRect(hWnd, NULL, TRUE);
+        break;
+
+    case WM_COPYDATA:
+        return Object2::getInstance()->OnCopyData(hWnd, wParam, lParam);
+
+    case WM_PAINT:
+        Object2::getInstance()->OnPaint(hWnd);
+        break;
+
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
@@ -140,24 +158,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
                 break;
             case IDM_EXIT:
-                DestroyWindow(hWnd);
+                Object2::getInstance()->OnCommand(hWnd, wParam);
                 break;
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }
         }
         break;
-    case WM_PAINT:
-        {
-            PAINTSTRUCT ps;
-            BeginPaint(hWnd, &ps);
-            // TODO: Add any drawing code here...
-            EndPaint(hWnd, &ps);
-        }
-        break;
+
     case WM_DESTROY:
-        PostQuitMessage(0);
+        Object2::getInstance()->OnDestroy(hWnd);
         break;
+
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }

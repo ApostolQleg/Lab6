@@ -5,6 +5,8 @@
 #include "framework.h"
 #include "Object3.h"
 
+#include "../SharedData.h"
+
 #define MAX_LOADSTRING 100
 
 // Global Variables:
@@ -78,7 +80,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
     wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_OBJECT3);
-    wcex.lpszClassName  = szWindowClass;
+    wcex.lpszClassName  = OBJECT3_CLASS;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
@@ -98,7 +100,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // Store instance handle in our global variable
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+   HWND hWnd = CreateWindowW(OBJECT3_CLASS, szTitle, WS_OVERLAPPEDWINDOW,
        CW_USEDEFAULT,        // x
        0,                    // y
        400,                  // width

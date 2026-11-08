@@ -33,12 +33,18 @@
     <ClInclude Include="..\SharedData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="generator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Object2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="generator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
