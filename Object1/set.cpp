@@ -163,6 +163,13 @@ bool ReadAndValidate(HWND hDlg, Object1& out)
 	if (yMin >= yMax)
 		return Fail(hDlg, IDC_EDIT5, L"Max y must be greater than min y");
 	
+	int xRange = xMax - xMin + 1;
+	int yRange = yMax - yMin + 1;
+	int possibleRange = xRange * yRange;
+
+	if (possibleRange < nPoint)
+		return Fail(hDlg, IDC_EDIT5, L"Point count should not be bigger than possible range");
+
 	out.nPoint = nPoint;
 	out.xMax = xMax;  out.xMin = xMin;
 	out.yMax = yMax;  out.yMin = yMin;

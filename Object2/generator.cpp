@@ -60,9 +60,32 @@ void Object2::GeneratePoints()
 	if (xRange <= 0) xRange = 1;
 	if (yRange <= 0) yRange = 1;
 
+	if (pointCount > xRange)
+	{
+		pointCount = xRange;
+	}
+
 	for (int i = 0; i < pointCount; ++i)
 	{
-		points[i].x = params.xMin + (rand() % xRange);
+		int candidateX;
+		BOOL exists;
+
+		do
+		{
+			candidateX = params.xMin + (rand() % xRange);
+			exists = FALSE;
+
+			for (int j = 0; j < i; ++j)
+			{
+				if (points[j].x == candidateX)
+				{
+					exists = TRUE;
+					break;
+				}
+			}
+		} while (exists);
+
+		points[i].x = candidateX;
 		points[i].y = params.yMin + (rand() % yRange);
 	}
 }
