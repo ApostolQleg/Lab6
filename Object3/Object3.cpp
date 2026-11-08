@@ -5,6 +5,7 @@
 #include "framework.h"
 #include "Object3.h"
 
+#include "graph.h"
 #include "../SharedData.h"
 
 #define MAX_LOADSTRING 100
@@ -103,8 +104,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    HWND hWnd = CreateWindowW(OBJECT3_CLASS, szTitle, WS_OVERLAPPEDWINDOW,
        CW_USEDEFAULT,        // x
        0,                    // y
-       400,                  // width
-       300,                  // height
+       800,                  // width
+       600,                  // height
        nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
@@ -132,6 +133,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+    case WM_CREATE:
+        Object3::getInstance()->OnCreate(hWnd);
+        break;
+
+    case WM_UPDATE_GRAPH:
+        Object3::getInstance()->OnUpdateGraph(hWnd);
+        break;
+
+    case WM_SIZE:
+        InvalidateRect(hWnd, NULL, TRUE);
+        break;
+
+    case WM_PAINT:
+        Object3::getInstance()->OnPaint(hWnd);
+        break;
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
@@ -149,16 +165,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
-    case WM_PAINT:
-        {
-            PAINTSTRUCT ps;
-            BeginPaint(hWnd, &ps);
-            // TODO: Add any drawing code here...
-            EndPaint(hWnd, &ps);
-        }
-        break;
     case WM_DESTROY:
-        PostQuitMessage(0);
+        Object3::getInstance()->OnDestroy(hWnd);
         break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);

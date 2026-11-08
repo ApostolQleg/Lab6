@@ -95,7 +95,7 @@ INT_PTR CALLBACK DlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 				{
 					WinExec("Object2.exe", SW_SHOW);
 				}
-				DestroyWindow(hDlg);
+				
 				InvalidateRect(hWndMain, NULL, TRUE);
 			}
 			return (INT_PTR)TRUE;

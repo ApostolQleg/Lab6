@@ -156,6 +156,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 		break;
 	}
+	case WM_DATA_READY:
+	{
+		HWND hWndObj3 = FindWindowW(OBJECT3_CLASS, NULL);
+		if (hWndObj3)
+		{
+			PostMessage(hWndObj3, WM_UPDATE_GRAPH, 0, 0);
+		}
+		else
+		{
+			WinExec("Object3.exe", SW_SHOW);
+		}
+		break;
+	}
 	case WM_COMMAND:
 	{
 		int wmId = LOWORD(wParam);
