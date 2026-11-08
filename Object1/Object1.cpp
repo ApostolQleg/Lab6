@@ -3,7 +3,9 @@
 
 #include "pch.h"
 #include "framework.h"
-#include "Lab6.h"
+#include "Object1.h"
+
+#include "set.h"
 
 #define MAX_LOADSTRING 100
 
@@ -99,7 +101,11 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    hInst = hInstance; // Store instance handle in our global variable
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+      CW_USEDEFAULT,        // x
+      0,                    // y
+      400,                  // width
+      300,                  // height
+      nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {
@@ -134,6 +140,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             {
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+                break;
+            case ID_ACTIONS_SET:
+                Object1::getInstance()->Open(hWnd);
                 break;
             case IDM_EXIT:
                 DestroyWindow(hWnd);

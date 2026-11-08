@@ -24,7 +24,7 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Lab6.h">
+    <ClInclude Include="Object1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="pch.h">
@@ -33,17 +33,23 @@
     <ClInclude Include="..\SharedData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="set.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Lab6.cpp">
+    <ClCompile Include="Object1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="set.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Lab6.rc">
+    <ResourceCompile Include="Object1.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
@@ -51,7 +57,7 @@
     <Image Include="small.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Lab6.ico">
+    <Image Include="Object1.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
