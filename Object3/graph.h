@@ -4,24 +4,21 @@
 
 #include "../SharedData.h"
 
-// Константи буферів
-#define CLIPBOARD_BUF_SIZE       16384 // Розмір буфера для читання з Clipboard
-#define LABEL_BUF_SIZE           32    // Розмір буфера числового підпису
+#define CLIPBOARD_BUF_SIZE       16384
+#define LABEL_BUF_SIZE           32
 
-// Константи візуалізації та відступів графіка
-#define GRAPH_MARGIN_LEFT        65    // Відступ зліва для підписів осі Y
-#define GRAPH_MARGIN_RIGHT       35    // Відступ справа
-#define GRAPH_MARGIN_TOP         35    // Відступ зверху
-#define GRAPH_MARGIN_BOTTOM      45    // Відступ знизу для підписів осі X
-#define GRAPH_TICK_SIZE          5     // Розмір засічок на осях у пікселях
-#define GRAPH_NUM_TICKS          5     // Кількість ділень на осях
-#define GRAPH_POINT_RADIUS       3     // Радіус маркерів точок
+#define GRAPH_MARGIN_LEFT        65
+#define GRAPH_MARGIN_RIGHT       35
+#define GRAPH_MARGIN_TOP         35
+#define GRAPH_MARGIN_BOTTOM      45
+#define GRAPH_TICK_SIZE          5
+#define GRAPH_NUM_TICKS          5
+#define GRAPH_POINT_RADIUS       3
 
-// Кольори (GDI COLORREF)
-#define COLOR_AXIS               RGB(60, 60, 60)      // Колір осей
-#define COLOR_GRID               RGB(220, 220, 220)  // Колір сітки
-#define COLOR_GRAPH_LINE         RGB(20, 100, 220)   // Колір лінії графіка
-#define COLOR_POINT_FILL         RGB(220, 40, 40)    // Колір маркерів точок
+#define COLOR_AXIS               RGB(60, 60, 60)
+#define COLOR_GRID               RGB(220, 220, 220)
+#define COLOR_GRAPH_LINE         RGB(20, 100, 220)
+#define COLOR_POINT_FILL         RGB(220, 40, 40)
 
 class Object3
 {

@@ -6,9 +6,12 @@
 
 Object3* Object3::p_instance = nullptr;
 
-Object3::Object3()
-	: points(nullptr), pointCount(0), hasData(FALSE),
-	minX(0), maxX(0), minY(0), maxY(0)
+Object3::Object3() :
+	points(nullptr),
+	pointCount(0),
+	hasData(FALSE),
+	minX(0), maxX(0),
+	minY(0), maxY(0)
 {
 }
 

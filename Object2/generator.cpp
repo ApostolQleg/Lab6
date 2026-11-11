@@ -6,8 +6,7 @@
 
 Object2* Object2::p_instance = nullptr;
 
-Object2::Object2()
-	: points(nullptr), pointCount(0), hasData(FALSE)
+Object2::Object2() : points(nullptr), pointCount(0), hasData(FALSE)
 {
 	memset(&params, 0, sizeof(params));
 	srand((unsigned int)GetTickCount64());
